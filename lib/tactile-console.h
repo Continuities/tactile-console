@@ -14,7 +14,12 @@ class TactileConsole
   public:
     TactileConsole();
     void setVibration(float degrees, float amplitude);
+    void listenForRotation();
+    int getAngle();
   private:
+    int a_val;
+    int b_val;
+    int angle;
     float d2r(float degrees);
     float clamp(float val, float minimum, float maximum);
 };

@@ -1,13 +1,15 @@
 #include <tactile-console.h>
 
+#define BAUD 57600
+
 TactileConsole console;
 
 void setup() {
+  Serial.begin(BAUD);
+  console.setVibration(0, 0);
 }
 
 void loop() {
-  for (int angle = 0; angle < 360; angle += 1) {
-    console.setVibration((float)angle, 0.5);
-    delay(30);
-  }
+  console.listenForRotation();
+  console.setVibration((float)console.getAngle(), 1);
 }
